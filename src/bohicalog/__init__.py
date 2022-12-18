@@ -107,11 +107,11 @@ def setup_logger(
     logfile=None,
     level=DEBUG,
     formatter=None,
-    maxBytes=0,
-    backupCount=0,
-    fileLoglevel=None,
-    disableStderrLogger=False,
-    isRootLogger=False,
+    maxbytes=0,
+    backupcount=0,
+    fileloglevel=None,
+    disablestderrlogger=False,
+    isrootlogger=False,
     json=False,
     json_ensure_ascii=False,
 ):
@@ -135,22 +135,22 @@ def setup_logger(
     :param string logfile: If set, also write logs to the specified filename.
     :param int level: Minimum `logging-level <https://docs.python.org/2/library/logging.html#logging-levels>`_ to display (default: ``DEBUG``).
     :param Formatter formatter: `Python logging Formatter object <https://docs.python.org/2/library/logging.html#formatter-objects>`_ (by default uses the internal LogFormatter).
-    :param int maxBytes: Size of the logfile when rollover should occur. Defaults to 0, rollover never occurs.
-    :param int backupCount: Number of backups to keep. Defaults to 0, rollover never occurs.
-    :param int fileLoglevel: Minimum `logging-level <https://docs.python.org/2/library/logging.html#logging-levels>`_ for the file logger (is not set, it will use the loglevel from the ``level`` argument)
-    :param bool disableStderrLogger: Should the default stderr logger be disabled. Defaults to False.
-    :param bool isRootLogger: If True then returns a root logger. Defaults to False. (see also the `Python docs <https://docs.python.org/3/library/logging.html#logging.getLogger>`_).
+    :param int maxbytes: Size of the logfile when rollover should occur. Defaults to 0, rollover never occurs.
+    :param int backupcount: Number of backups to keep. Defaults to 0, rollover never occurs.
+    :param int fileloglevel: Minimum `logging-level <https://docs.python.org/2/library/logging.html#logging-levels>`_ for the file logger (is not set, it will use the loglevel from the ``level`` argument)
+    :param bool disablestderrlogger: Should the default stderr logger be disabled. Defaults to False.
+    :param bool isrootlogger: If True then returns a root logger. Defaults to False. (see also the `Python docs <https://docs.python.org/3/library/logging.html#logging.getLogger>`_).
     :param bool json: If True then log in JSON format. Defaults to False. (uses `python-json-logger <https://github.com/madzak/python-json-logger>`_).
     :param bool json_ensure_ascii: Passed to json.dumps as `ensure_ascii`, default: False (if False: writes utf-8 characters, if True: ascii only representation of special characters - eg. '\u00d6\u00df')
     :return: A fully configured Python logging `Logger object <https://docs.python.org/2/library/logging.html#logger-objects>`_ you can use with ``.debug("msg")``, etc.
     """
 
-    _logger = logging.getLogger(None if isRootLogger else name)
+    _logger = logging.getLogger(None if isrootlogger else name)
     _logger.propagate = False
 
     # set the minimum level needed for the logger itself (the lowest handler level)
-    minLevel = fileLoglevel if fileLoglevel and fileLoglevel < level else level
-    _logger.setLevel(minLevel)
+    minlevel = fileloglevel if fileloglevel and fileloglevel < level else level
+    _logger.setLevel(minlevel)
 
     # Setup default formatter
     _formatter = _get_json_formatter(json_ensure_ascii) if json else formatter or LogFormatter()
@@ -172,7 +172,7 @@ def setup_logger(
         handler.setFormatter(_formatter)
 
     # remove the stderr handler (stream_handler) if disabled
-    if disableStderrLogger:
+    if disablestderrlogger:
         if stderr_stream_handler is not None:
             _logger.removeHandler(stderr_stream_handler)
     elif stderr_stream_handler is None:
@@ -184,10 +184,10 @@ def setup_logger(
 
     if logfile:
         rotating_filehandler = RotatingFileHandler(
-            filename=logfile, maxBytes=maxBytes, backupCount=backupCount
+            filename=logfile, maxBytes=maxbytes, backupCount=backupcount
         )
         setattr(rotating_filehandler, BOHICALOG_INTERNAL_LOGGER_ATTR, True)
-        rotating_filehandler.setLevel(fileLoglevel or level)
+        rotating_filehandler.setLevel(fileloglevel or level)
         rotating_filehandler.setFormatter(_formatter)
         _logger.addHandler(rotating_filehandler)
 
@@ -357,8 +357,8 @@ def setup_default_logger(
         logfile=logfile,
         level=level,
         formatter=formatter,
-        backupCount=backupCount,
-        disableStderrLogger=disableStderrLogger,
+        backupcount=backupCount,
+        disablestderrlogger=disableStderrLogger,
     )
     return logger
 
@@ -450,14 +450,14 @@ def logfile(
     """
     Setup logging to file (using a `RotatingFileHandler <https://docs.python.org/2/library/logging.handlers.html#rotatingfilehandler>`_ internally).
 
-    By default, the file grows indefinitely (no rotation). You can use the ``maxBytes`` and
-    ``backupCount`` values to allow the file to rollover at a predetermined size. When the
+    By default, the file grows indefinitely (no rotation). You can use the ``maxbytes`` and
+    ``backupcount`` values to allow the file to rollover at a predetermined size. When the
     size is about to be exceeded, the file is closed and a new file is silently opened
-    for output. Rollover occurs whenever the current log file is nearly ``maxBytes`` in length;
-    if either of ``maxBytes`` or ``backupCount`` is zero, rollover never occurs.
+    for output. Rollover occurs whenever the current log file is nearly ``maxbytes`` in length;
+    if either of ``maxbytes`` or ``backupcount`` is zero, rollover never occurs.
 
-    If ``backupCount`` is non-zero, the system will save old log files by appending the
-    extensions ‘.1’, ‘.2’ etc., to the filename. For example, with a ``backupCount`` of 5
+    If ``backupcount`` is non-zero, the system will save old log files by appending the
+    extensions ‘.1’, ‘.2’ etc., to the filename. For example, with a ``backupcount`` of 5
     and a base file name of app.log, you would get app.log, app.log.1, app.log.2, up to
     app.log.5. The file being written to is always app.log. When this file is filled,
     it is closed and renamed to app.log.1, and if files app.log.1, app.log.2, etc. exist,
