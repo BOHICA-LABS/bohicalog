@@ -71,6 +71,11 @@ class JsonEncoder(json.JSONEncoder):
     """
 
     def default(self, obj):
+        """
+        Default method to encode objects
+        :param obj:
+        :return:
+        """
         if isinstance(obj, (date, datetime, time)):
             return self.format_datetime_obj(obj)
 
@@ -91,6 +96,11 @@ class JsonEncoder(json.JSONEncoder):
                 return None
 
     def format_datetime_obj(self, obj):
+        """
+        Formats datetime objects
+        :param obj:
+        :return:
+        """
         return obj.isoformat()
 
 

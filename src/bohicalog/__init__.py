@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
 
-"""The BOHICA Logging Library provides a configured logger for your module or application."""
+import functools
+import logging
+import os
+import sys
+from logging import CRITICAL, DEBUG, ERROR, INFO, NOTSET, WARN, WARNING  # noqa: F401
+from logging.handlers import RotatingFileHandler, SysLogHandler
 
-# -*- coding: utf-8 -*-
+from .colors import Fore as ForegroundColors
+from .jsonformat import JsonFormatter
+
+"""The BOHICA Logging Library provides a configured logger for your module or application."""
 
 """
 This helper provides a versatile yet easy to use and beautiful logging setup.
@@ -40,16 +48,6 @@ parameter `level`.
 See the documentation for more information: https://bohicalog.readthedocs.io
 
 """
-
-import functools
-import logging
-import os
-import sys
-from logging import CRITICAL, DEBUG, ERROR, INFO, NOTSET, WARN, WARNING  # noqa: F401
-from logging.handlers import RotatingFileHandler, SysLogHandler
-
-from .colors import Fore as ForegroundColors
-from .jsonformat import JsonFormatter
 
 try:
     import curses  # type: ignore
@@ -105,20 +103,18 @@ if os.name == "nt":
 
 
 def setup_logger(
-        name=__name__,
-        logfile=None,
-        level=DEBUG,
-        formatter=None,
-        maxBytes=0,
-        backupCount=0,
-        fileLoglevel=None,
-        disableStderrLogger=False,
-        isRootLogger=False,
-        json=False,
-        json_ensure_ascii=False,
-
+    name=__name__,
+    logfile=None,
+    level=DEBUG,
+    formatter=None,
+    maxBytes=0,
+    backupCount=0,
+    fileLoglevel=None,
+    disableStderrLogger=False,
+    isRootLogger=False,
+    json=False,
+    json_ensure_ascii=False,
 ):
-
     """
     Configures and returns a fully configured logger instance, no hassles.
     If a logger with the specified name already exists, it returns the existing instance,
@@ -208,7 +204,7 @@ class LogFormatter(logging.Formatter):
     """
 
     def __init__(
-            self, color=True, fmt=DEFAULT_FORMAT, datefmt=DEFAULT_DATE_FORMAT, colors=DEFAULT_COLORS
+        self, color=True, fmt=DEFAULT_FORMAT, datefmt=DEFAULT_DATE_FORMAT, colors=DEFAULT_COLORS
     ):
         """
         :arg bool color: Enables color support.
@@ -236,6 +232,11 @@ class LogFormatter(logging.Formatter):
             self._normal = ForegroundColors.RESET
 
     def format(self, record):
+        """
+        Format the specified record as text.
+        :param record:
+        :return:
+        """
         try:
             message = record.getMessage()
             assert isinstance(message, basestring_type)  # guaranteed by logging
@@ -328,7 +329,7 @@ def _safe_unicode(s):
 
 
 def setup_default_logger(
-        logfile=None, level=DEBUG, formatter=None, maxBytes=0, backupCount=0, disableStderrLogger=False
+    logfile=None, level=DEBUG, formatter=None, maxBytes=0, backupCount=0, disableStderrLogger=False
 ):
     """
     Deprecated. Use `BOHICALOG.loglevel(..)`, `BOHICALOG.logfile(..)`, etc.
@@ -437,14 +438,14 @@ def formatter(formatter, update_custom_handlers=False):
 
 
 def logfile(
-        filename,
-        formatter=None,
-        mode="a",
-        maxBytes=0,
-        backupCount=0,
-        encoding=None,
-        loglevel=None,
-        disableStderrLogger=False,
+    filename,
+    formatter=None,
+    mode="a",
+    maxBytes=0,
+    backupCount=0,
+    encoding=None,
+    loglevel=None,
+    disableStderrLogger=False,
 ):
     """
     Setup logging to file (using a `RotatingFileHandler <https://docs.python.org/2/library/logging.handlers.html#rotatingfilehandler>`_ internally).
@@ -548,6 +549,11 @@ def json(enable=True, json_ensure_ascii=False, update_custom_handlers=False):
 
 
 def _get_json_formatter(json_ensure_ascii):
+    """
+    Return a json formatter
+    :param json_ensure_ascii:
+    :return:
+    """
     supported_keys = [
         "asctime",
         "filename",
@@ -565,6 +571,11 @@ def _get_json_formatter(json_ensure_ascii):
     ]
 
     def log_format(x):
+        """
+        Format the log message
+        :param x:
+        :return:
+        """
         return ["%({0:s})s".format(i) for i in x]
 
     custom_format = " ".join(log_format(supported_keys))
@@ -572,8 +583,20 @@ def _get_json_formatter(json_ensure_ascii):
 
 
 def log_function_call(func):
+    """
+    Decorator to log function calls
+    :param func:
+    :return:
+    """
+
     @functools.wraps(func)
     def wrap(*args, **kwargs):
+        """
+        Wrapper function
+        :param args:
+        :param kwargs:
+        :return:
+        """
         args_str = ", ".join([str(arg) for arg in args])
         kwargs_str = ", ".join(["%s=%s" % (key, kwargs[key]) for key in kwargs])
         if args_str and kwargs_str:

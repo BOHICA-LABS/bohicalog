@@ -4,6 +4,7 @@ prune scripts
 prune notebooks
 prune tests/.pytest_cache
 
+
 prune docs/build
 prune docs/source/api
 
@@ -14,4 +15,4 @@ recursive-include docs/source *.png
 global-exclude *.py[cod] __pycache__ *.so *.dylib .DS_Store *.gpickle
 
 include README.md LICENSE
-exclude tox.ini .bumpversion.cfg .readthedocs.yml .cruft.json
+exclude tox.ini .bumpversion.cfg .readthedocs.yml .cruft.json *.iml .idea/*.xml

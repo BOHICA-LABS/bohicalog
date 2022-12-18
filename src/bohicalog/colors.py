@@ -9,23 +9,50 @@ BEL = "\007"
 
 
 def code_to_chars(code):
+    """
+    Convert a color code to the corresponding ANSI escape sequence.
+    :param code:
+    :return:
+    """
     return CSI + str(code) + "m"
 
 
 def set_title(title):
+    """
+    Set the terminal title.
+    :param title:
+    :return:
+    """
     return OSC + "2;" + title + BEL
 
 
 def clear_screen(mode=2):
+    """
+    Clear the screen.
+    :param mode:
+    :return:
+    """
     return CSI + str(mode) + "J"
 
 
 def clear_line(mode=2):
+    """
+    Clear the current line.
+    :param mode:
+    :return:
+    """
     return CSI + str(mode) + "K"
 
 
 class AnsiCodes(object):
+    """
+    ANSI Codes for terminal control.
+    """
+
     def __init__(self):
+        """
+        Initialize the ANSI codes.
+        """
         # the subclasses declare class attributes which are numbers.
         # Upon instantiation, we define instance attributes, which are the same
         # as the class attributes but wrapped with the ANSI escape sequence
@@ -36,23 +63,57 @@ class AnsiCodes(object):
 
 
 class AnsiCursor(object):
+    """
+    ANSI Cursor Control
+    """
+
     def UP(self, n=1):
+        """
+        Move the cursor up by `n` rows.
+        :param n:
+        :return:
+        """
         return CSI + str(n) + "A"
 
     def DOWN(self, n=1):
+        """
+        Move the cursor down by `n` rows.
+        :param n:
+        :return:
+        """
         return CSI + str(n) + "B"
 
     def FORWARD(self, n=1):
+        """
+        Move the cursor forward by `n` columns.
+        :param n:
+        :return:
+        """
         return CSI + str(n) + "C"
 
     def BACK(self, n=1):
+        """
+        Move the cursor back by `n` columns.
+        :param n:
+        :return:
+        """
         return CSI + str(n) + "D"
 
     def POS(self, x=1, y=1):
+        """
+        Move the cursor to row `x`, column `y`.
+        :param x:
+        :param y:
+        :return:
+        """
         return CSI + str(y) + ";" + str(x) + "H"
 
 
 class AnsiFore(AnsiCodes):
+    """
+    ANSI Foreground Colours
+    """
+
     BLACK = 30
     RED = 31
     GREEN = 32
@@ -75,6 +136,10 @@ class AnsiFore(AnsiCodes):
 
 
 class AnsiBack(AnsiCodes):
+    """
+    ANSI Background Colours
+    """
+
     BLACK = 40
     RED = 41
     GREEN = 42
@@ -97,6 +162,10 @@ class AnsiBack(AnsiCodes):
 
 
 class AnsiStyle(AnsiCodes):
+    """
+    ANSI Text Styles
+    """
+
     BRIGHT = 1
     DIM = 2
     NORMAL = 22
