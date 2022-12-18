@@ -52,7 +52,7 @@ See the documentation for more information: https://bohicalog.readthedocs.io
 try:
     import curses  # type: ignore
 except ImportError:
-    curses = None
+    curses = None  # type: ignore
 
 # Python 2+3 compatibility settings for logger
 bytes_type = bytes
