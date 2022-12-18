@@ -66,7 +66,7 @@ bohicalog.json()
 logger.info("JSON test")
 
 # Start writing into a logfile
-bohicalog.logfile("/tmp/logzero-demo.log")
+bohicalog.logfile("/tmp/bohicalog-demo.log")
 
 # Set a minimum loglevel
 bohicalog.loglevel(bohicalog.WARNING)
@@ -85,11 +85,11 @@ JSON logging can be enabled for the default logger with `bohicalog.json()`, or w
 ```python
 >>> bohicalog.json()
 >>> logger.info("test")
-{"asctime": "2022-12-21 10:42:45,808", "filename": "<stdin>", "funcName": "<module>", "levelname": "INFO", "levelno": 20, "lineno": 1, "module": "<stdin>", "message": "test", "name": "logzero_default", "pathname": "<stdin>", "process": 76179, "processName": "MainProcess", "threadName": "MainThread"}
+{"asctime": "2022-12-21 10:42:45,808", "filename": "<stdin>", "funcName": "<module>", "levelname": "INFO", "levelno": 20, "lineno": 1, "module": "<stdin>", "message": "test", "name": "bohicalog_default", "pathname": "<stdin>", "process": 76179, "processName": "MainProcess", "threadName": "MainThread"}
 
 >>> my_logger = setup_logger(json=True)
 >>> my_logger.info("test")
-{"asctime": "2022-12-21 10:42:45,808", "filename": "<stdin>", "funcName": "<module>", "levelname": "INFO", "levelno": 20, "lineno": 1, "module": "<stdin>", "message": "test", "name": "logzero_default", "pathname": "<stdin>", "process": 76179, "processName": "MainProcess", "threadName": "MainThread"}
+{"asctime": "2022-12-21 10:42:45,808", "filename": "<stdin>", "funcName": "<module>", "levelname": "INFO", "levelno": 20, "lineno": 1, "module": "<stdin>", "message": "test", "name": "bohicalog_default", "pathname": "<stdin>", "process": 76179, "processName": "MainProcess", "threadName": "MainThread"}
 ```
 
 The logged JSON object has these fields:
@@ -104,7 +104,7 @@ The logged JSON object has these fields:
   "lineno": 9,
   "module": "test",
   "message": "info",
-  "name": "logzero",
+  "name": "bohicalog",
   "pathname": "_tests/test.py",
   "process": 76204,
   "processName": "MainProcess",
