@@ -16,7 +16,7 @@ __all__ = [
     "get_git_hash",
 ]
 
-VERSION = "1.0.0-dev"
+VERSION = "1.0.0"
 AUTHOR = "Joshua Magady"
 AUTHOR_EMAIL = "josh.magady@gmail.com"
 
