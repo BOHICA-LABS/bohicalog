@@ -1,4 +1,6 @@
+"""The BOHICA Logging Library provides a configured logger for your module or application."""
 # -*- coding: utf-8 -*-
+
 
 import functools
 import logging
@@ -9,8 +11,6 @@ from logging.handlers import RotatingFileHandler, SysLogHandler
 
 from .colors import Fore as ForegroundColors
 from .jsonformat import JsonFormatter
-
-"""The BOHICA Logging Library provides a configured logger for your module or application."""
 
 """
 This helper provides a versatile yet easy to use and beautiful logging setup.
