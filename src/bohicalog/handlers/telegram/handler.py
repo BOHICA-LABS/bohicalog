@@ -1,7 +1,7 @@
 import logging
 from threading import RLock, Thread
 from time import sleep
-
+from bohicalog.utils import check_key
 import requests
 import cloudscraper  # Replaces requests and can get around cloudflare bot check
 from retry import retry
@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 class TelegramLoggingHandler(logging.Handler):
     """
     This method is called by the logging framework to write a log message to the telegram channel.
+    https://core.telegram.org/bots/api#sendmessage
     """
 
     def __init__(self,
@@ -64,7 +65,7 @@ class TelegramLoggingHandler(logging.Handler):
         Returns the Base url for the telegram handler.
         :return:
         """
-        return 'https://{}/bot{}'.format(self.host, self.bot_token)
+        return f'https://{self.host}/bot{self.bot_token}'
 
     def _get(self, resource, params=None):
         """
@@ -73,7 +74,7 @@ class TelegramLoggingHandler(logging.Handler):
         :param params: params to pass
         :return:
         """
-        endpoint = '{}/{}'.format(self._baseurl, resource)
+        endpoint = f'{self._baseurl}/{resource}'
 
         return self._session.post(endpoint, params=params)
 
@@ -132,7 +133,7 @@ class TelegramLoggingHandler(logging.Handler):
         :return:
         """
         while True:
-            # as long as we can aquire the lock, we can continue
+            # as long as we can acquire the lock, we can continue
             lock_status = self._stop_signal.acquire(blocking=False)
             if not lock_status:
                 break
@@ -152,3 +153,33 @@ class TelegramLoggingHandler(logging.Handler):
         self._writer_thread = Thread(target=self._write_manager)
         self._writer_thread.daemon = True
         self._writer_thread.start()
+
+    def _get_updates(self):
+        resource = 'getUpdates'
+        return self._get(resource)
+
+    def get_chat_id(self):
+        """
+        Get the chat id of the channel.
+        :return:
+        """
+        response = self._get_updates()
+        response.raise_for_status()
+        result = []
+        for update in response.json()['result']:
+            if check_key(update, 'message', 'chat', 'id'):
+                result.append(update['message']['chat']['id'])
+            elif check_key(update, 'edited_message', 'chat', 'id'):
+                result.append(update['edited_message']['chat']['id'])
+            elif check_key(update, 'channel_post', 'chat', 'id'):
+                result.append(update['channel_post']['chat']['id'])
+            elif check_key(update, 'edited_channel_post', 'chat', 'id'):
+                result.append(update['edited_channel_post']['chat']['id'])
+            elif check_key(update, 'inline_query', 'from', 'id'):
+                result.append(update['inline_query']['from']['id'])
+            elif check_key(update, 'chosen_inline_result', 'from', 'id'):
+                result.append(update['chosen_inline_result']['from']['id'])
+            elif check_key(update, 'my_chat_member', 'chat', 'id'):
+                result.append(update['my_chat_member']['chat']['id'])
+
+        return [*set(result)]
