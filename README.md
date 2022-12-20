@@ -36,6 +36,9 @@
     <a href="https://github.com/BOHICA-Labs/bohicalog/blob/main/.github/CODE_OF_CONDUCT.md">
         <img src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg" alt="Contributor Covenant"/>
     </a>
+    <a href="https://wakatime.com/projects/bohicalog">
+        <img src="https://wakatime.com/badge/user/db8a3ca7-6189-459a-a0a4-ba68105a41ee/project/07a61305-1b3b-4cfd-82d8-ba80283fb7b9.svg" alt="Coding Time"/>
+    </a>
 </p>
 
 The BOHICA Logging Library provides a configured logger for you module or application
@@ -122,6 +125,35 @@ Exceptions logged with `logger.exception(e)` have these additional JSON fields:
   "exc_info": "Traceback (most recent call last):\n  File \"_tests/test.py\", line 15, in test_this\n    raise Exception(\"this is a demo exception\")\nException: this is a demo exception"
 }
 ```
+
+### Telegram logging
+
+Telegram logging can be enabled for the default logger with `bohicalog.telegram()`, or with `setup_logger(telegram=True)` for custom loggers:
+
+```python
+import logging
+
+from bohicalog.handlers import TelegramLoggingHandler
+
+BOT_TOKEN = '1612485124:AAFW9JXxjqY9d-XayMKh8Q4-_iyHkXSw3N8'
+CHANNEL_NAME = 'example_channel_logger'
+
+
+def main():
+   telegram_log_handler = TelegramLoggingHandler(BOT_TOKEN, CHANNEL_NAME)
+   my_logger = logging.getLogger('My-Logger')
+   my_logger.setLevel(logging.INFO)
+   my_logger.addHandler(logging.StreamHandler())
+   my_logger.addHandler(telegram_log_handler)
+
+   for i in range(5):
+      my_logger.error(f'iterating {i}..')
+
+
+if __name__ == '__main__':
+   main()
+```
+
 
 Take a look at the documentation for more information and examples:
 
