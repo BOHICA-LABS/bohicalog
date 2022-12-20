@@ -1,5 +1,59 @@
 BOHICA Logging Library |release| Documentation
 ==============================================
+.. image:: https://github.com/BOHICA-Labs/bohicalog/workflows/Tests/badge.svg
+    :target: https://github.com/BOHICA-Labs/bohicalog/actions?query=workflow%3ATests
+.. image:: https://img.shields.io/pypi/v/bohicalog
+    :target: https://pypi.org/project/bohicalog
+.. image:: https://img.shields.io/pypi/pyversions/bohicalog
+    :target: https://pypi.org/project/bohicalog
+.. image:: https://img.shields.io/pypi/l/bohicalog
+    :target: https://github.com/BOHICA-Labs/bohicalog/blob/main/LICENSE
+.. image:: https://readthedocs.org/projects/bohicalog/badge/?version=latest
+    :target: https://bohicalog.readthedocs.io/en/latest/?badge=latest
+.. image:: https://codecov.io/gh/BOHICA-Labs/bohicalog/branch/main/graph/badge.svg
+    :target: https://codecov.io/gh/BOHICA-Labs/bohicalog/branch/main
+.. image:: https://img.shields.io/badge/Cookiecutter-snekpack-blue
+    :target: https://github.com/cthoyt/cookiecutter-python-package
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://github.com/psf/black
+.. image:: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg
+    :target: https://github.com/BOHICA-Labs/bohicalog/blob/main/.github/CODE_OF_CONDUCT.md
+.. image:: https://wakatime.com/badge/user/db8a3ca7-6189-459a-a0a4-ba68105a41ee/project/07a61305-1b3b-4cfd-82d8-ba80283fb7b9.svg
+    :target: https://wakatime.com/projects/bohicalog
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting Started
+
+   installation
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Usage
+
+   basic_usage
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Modules
+
+   bohicalog_module
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Handlers
+
+   handlers_module
+
+
+Indices and Tables
+------------------
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
 
 Cookiecutter
 ------------
@@ -28,20 +82,3 @@ It comes with the following:
 - A pre-formatted CONTRIBUTING guide
 - Automatic tool for releasing to PyPI with ``tox -e finish``
 - A copy of the `Contributor Covenant <https://www.contributor-covenant.org>`_ as a basic code of conduct
-
-Table of Contents
------------------
-.. toctree::
-   :maxdepth: 2
-   :caption: Getting Started
-   :name: start
-
-   installation
-   usage
-
-
-Indices and Tables
-------------------
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

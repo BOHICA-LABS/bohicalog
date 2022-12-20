@@ -103,17 +103,17 @@ if os.name == "nt":
 
 
 def setup_logger(
-    name=__name__,
-    logfile=None,
-    level=DEBUG,
-    formatter=None,
-    maxbytes=0,
-    backupcount=0,
-    fileloglevel=None,
-    disablestderrlogger=False,
-    isrootlogger=False,
-    json=False,
-    json_ensure_ascii=False,
+        name=__name__,
+        logfile=None,
+        level=DEBUG,
+        formatter=None,
+        maxbytes=0,
+        backupcount=0,
+        fileloglevel=None,
+        disablestderrlogger=False,
+        isrootlogger=False,
+        json=False,
+        json_ensure_ascii=False,
 ):
     """
     Configures and returns a fully configured logger instance, no hassles.
@@ -193,14 +193,12 @@ def setup_logger(
 
     return _logger
 
-
 class LogFormatter(logging.Formatter):
     """
     Log formatter used in Tornado. Key features of this formatter are:
     * Color support when logging to a terminal that supports it.
     * Timestamps on every log line.
     * Robust against str/bytes encoding problems.
-
     """
 
     def __init__(
@@ -503,6 +501,7 @@ def logfile(
 def __remove_internal_loggers(logger_to_update, disableStderrLogger=True):
     """
     Remove the internal loggers (e.g. stderr logger and file logger) from the specific logger
+
     :param logger_to_update: the logger to remove internal loggers from
     :param disableStderrLogger: should the default stderr logger be disabled? defaults to True
     """
@@ -519,6 +518,7 @@ def __remove_internal_loggers(logger_to_update, disableStderrLogger=True):
 def syslog(logger_to_update=logger, facility=SysLogHandler.LOG_USER, disableStderrLogger=True):
     """
     Setup logging to syslog and disable other internal loggers
+    Configure a SysLogHandler to log to syslog. This will disable the default stderr logger.
     :param logger_to_update: the logger to enable syslog logging for
     :param facility: syslog facility to log to
     :param disableStderrLogger: should the default stderr logger be disabled? defaults to True

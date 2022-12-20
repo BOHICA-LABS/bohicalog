@@ -1,5 +1,6 @@
-Usage
-=====
+bohicalog
+=========
+
 .. automodule:: bohicalog
     :members:
 
@@ -11,3 +12,4 @@ Usage
 
 .. automodule:: bohicalog.version
     :members:
+

@@ -1,20 +1,26 @@
-from threading import RLock
-
 """
 This module contains the buffer class.
 """
+
+from threading import RLock
 
 
 class Buffer:
     """
     Buffer class for the telegram handler
+
+    Usage:
+
+    .. code-block:: python
+
+        from bohicalog.handlers.telegram.buffer import Buffer
+
+        buffer = Buffer(max_size=1000)
     """
 
     def __init__(self, max_size=None):
         """
-        Initialize the buffer
         :param max_size: max size of the buffer
-        :param max_size:
         """
         self._lock = RLock()
         self._buffer = ""
@@ -23,8 +29,8 @@ class Buffer:
     def write(self, data):
         """
         Write data to the buffer
-        :param data:
-        :return:
+
+        :param data: data to write
         """
         with self._lock:
             self._buffer = f"{self._buffer}\n{data}"[: self._max_size]
@@ -32,8 +38,10 @@ class Buffer:
     def read(self, count):
         """
         Read data from the buffer
-        :param count:
-        :return:
+
+        :param count: count of data to read
+        :rtype: str
+        :return: data read
         """
         result = ""
         with self._lock:

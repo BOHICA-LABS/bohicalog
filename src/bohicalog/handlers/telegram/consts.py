@@ -1,4 +1,3 @@
-
 """
 Contains constants for the telegram handler.
 """
