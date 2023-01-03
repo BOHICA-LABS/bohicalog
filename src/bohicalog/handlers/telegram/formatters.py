@@ -30,7 +30,7 @@ class MarkdownFormatter(TelegramFormatter):
     """Markdown formatter for telegram."""
 
     fmt = "`%(asctime)s` *%(levelname)s*\n[%(name)s:%(funcName)s]\n%(message)s"
-    parse_mode = "Markdown"
+    parse_mode = "Markdown"  # type: ignore
 
     def formatException(self, *args, **kwargs):
         """
@@ -55,7 +55,7 @@ class HTMLFormatter(TelegramFormatter):
     """HTML formatter for telegram."""
 
     fmt = "<code>%(asctime)s</code> <b>%(levelname)s</b>\nFrom %(name)s:%(funcName)s\n%(message)s"
-    parse_mode = "HTML"
+    parse_mode = "HTML"  # type: ignore
 
     def __init__(self, *args, **kwargs):
         """
