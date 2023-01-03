@@ -54,7 +54,7 @@
    :maxdepth: 1
    :caption: Handlers
 
-   handlers_module
+   handlers/telegram_module
 
 ********************
  Indices and Tables
