@@ -1,21 +1,21 @@
-Telegram
-========
+##########
+ Telegram
+##########
 
 .. automodule:: bohicalog.handlers.telegram
-    :members:
+   :members:
 
 .. automodule:: bohicalog.handlers.telegram.handler
-    :members:
+   :members:
 
 .. automodule:: bohicalog.handlers.telegram.buffer
-    :members:
+   :members:
 
 .. automodule:: bohicalog.handlers.telegram.consts
-    :members:
+   :members:
 
 .. automodule:: bohicalog.handlers.telegram.formatters
-    :members:
+   :members:
 
 .. automodule:: bohicalog.handlers.telegram.utils
-    :members:
-
+   :members:

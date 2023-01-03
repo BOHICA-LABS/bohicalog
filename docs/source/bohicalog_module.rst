@@ -1,15 +1,15 @@
-bohicalog
-=========
+###########
+ bohicalog
+###########
 
 .. automodule:: bohicalog
-    :members:
+   :members:
 
 .. automodule:: bohicalog.jsonformat
-    :members:
+   :members:
 
 .. automodule:: bohicalog.colors
-    :members:
+   :members:
 
 .. automodule:: bohicalog.version
-    :members:
-
+   :members:

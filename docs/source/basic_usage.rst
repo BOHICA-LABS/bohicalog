@@ -1,36 +1,39 @@
-Basic Example
-=============
+###############
+ Basic Example
+###############
 
-The following example shows how to use the library to create a simple logger
+The following example shows how to use the library to create a simple
+logger
 
-.. code-block:: python
+.. code:: python
 
-    from bohicalog import logger
+   from bohicalog import logger
 
-    logger.debug("hello")
-    logger.info("info")
-    logger.warning("warn")
-    logger.error("error")
+   logger.debug("hello")
+   logger.info("info")
+   logger.warning("warn")
+   logger.error("error")
 
-    # This is how you'd log an exception
-    try:
-        raise Exception("this is a demo exception")
-    except Exception as e:
-        logger.exception(e)
+   # This is how you'd log an exception
+   try:
+       raise Exception("this is a demo exception")
+   except Exception as e:
+       logger.exception(e)
 
-    # JSON logging
-    import bohicalog
-    bohicalog.json()
+   # JSON logging
+   import bohicalog
 
-    logger.info("JSON test")
+   bohicalog.json()
 
-    # Start writing into a logfile
-    bohicalog.logfile("/tmp/bohicalog-demo.log")
+   logger.info("JSON test")
 
-    # Set a minimum loglevel
-    bohicalog.loglevel(bohicalog.WARNING)
+   # Start writing into a logfile
+   bohicalog.logfile("/tmp/bohicalog-demo.log")
 
-    ...
+   # Set a minimum loglevel
+   bohicalog.loglevel(bohicalog.WARNING)
+
+   ...
 
 .. image:: ../_static/demo-output-json.png
    :scale: 100 %

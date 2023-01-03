@@ -1,22 +1,25 @@
-Installation
-============
-The most recent release can be installed from
-`PyPI <https://pypi.org/project/bohicalog>`_ with:
+##############
+ Installation
+##############
 
-.. code-block:: shell
+The most recent release can be installed from `PyPI
+<https://pypi.org/project/bohicalog>`_ with:
 
-    $ pip install bohicalog
+.. code:: shell
 
-The most recent code and data can be installed directly from GitHub with:
+   $ pip install bohicalog
 
-.. code-block:: shell
+The most recent code and data can be installed directly from GitHub
+with:
 
-    $ pip install git+https://github.com/BOHICA-Labs/bohicalog.git
+.. code:: shell
+
+   $ pip install git+https://github.com/BOHICA-Labs/bohicalog.git
 
 To install in development mode, use the following:
 
-.. code-block:: shell
+.. code:: shell
 
-    $ git clone git+https://github.com/BOHICA-Labs/bohicalog.git
-    $ cd bohicalog
-    $ pip install -e .
+   $ git clone git+https://github.com/BOHICA-Labs/bohicalog.git
+   $ cd bohicalog
+   $ pip install -e .
