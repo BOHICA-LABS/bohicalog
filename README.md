@@ -77,7 +77,7 @@ bohicalog.loglevel(bohicalog.WARNING)
 
 This is the output:
 
-![demo-output](https://raw.githubusercontent.com/bohica-labs/bohicalog/master/docs/_static/demo-output-json.png)
+![demo-output](https://raw.githubusercontent.com/bohica-labs/bohicalog/master/_static/demo-output-json.png)
 
 Note: You can find more examples in the documentation: https://bohicalog.readthedocs.io
 
