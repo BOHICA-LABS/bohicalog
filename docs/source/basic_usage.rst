@@ -36,6 +36,7 @@ logger
    ...
 
 .. image:: ../_static/demo-output-json.png
+   :target: ../_static/demo-output-json.png
    :scale: 100 %
    :alt: Demo with JSON output
    :align: center
