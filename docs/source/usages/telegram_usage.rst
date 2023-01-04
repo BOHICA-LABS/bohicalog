@@ -1,5 +1,5 @@
 #################
- telegram Example
+ Telegram Example
 #################
 
 The following example shows how to use the library to create a simple
