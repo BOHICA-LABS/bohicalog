@@ -60,9 +60,16 @@
 
 .. toctree::
    :maxdepth: 1
-   :caption: Command Line Interface
+   :caption: Command Line
 
    cli/cli_module
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Development
+
+   develop/workflow
+   develop/cicd
 
 ********************
  Indices and Tables
