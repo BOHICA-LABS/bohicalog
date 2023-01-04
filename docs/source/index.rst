@@ -59,10 +59,10 @@
    handlers/telegram_module
 
 .. toctree::
-    :maxdepth: 1
-    :caption: Command Line Interface
+   :maxdepth: 1
+   :caption: Command Line Interface
 
-    cli/cli_module
+   cli/cli_module
 
 ********************
  Indices and Tables
