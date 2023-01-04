@@ -1,7 +1,9 @@
+import os
+
+from dotenv import dotenv_values
+
 import bohicalog
 from bohicalog import logger
-from dotenv import dotenv_values
-import os
 
 config = {
     **dotenv_values("../../../.env.shared"),  # load shared development variables
@@ -9,10 +11,7 @@ config = {
     **os.environ,  # override loaded values with environment variables
 }
 # Telegram logging
-from bohicalog.handlers.telegram import (
-    HTMLFormatter,
-    TelegramLoggingHandler,
-)
+from bohicalog.handlers.telegram import HTMLFormatter, TelegramLoggingHandler
 
 BOT_TOKEN = config["TELEGRAM_BOT_TOKEN"]
 CHANNEL_NAME = config["TELEGRAM_BOT_CHAT_ID"]

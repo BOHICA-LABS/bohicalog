@@ -55,10 +55,21 @@ modindex_common_prefix = ["bohicalog."]
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["sphinx.ext.autosummary", "sphinx.ext.autodoc", "sphinx.ext.coverage", "sphinx.ext.intersphinx",
-              "sphinx.ext.todo", "sphinx.ext.mathjax", "sphinx.ext.viewcode", "sphinx_autodoc_typehints",
-              "sphinx_automodapi.automodapi", "sphinx_automodapi.smart_resolver", "sphinx_click.ext",
-              "click_extra.sphinx", "sphinxcontrib.programoutput"]
+extensions = [
+    "sphinx.ext.autosummary",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.coverage",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.todo",
+    "sphinx.ext.mathjax",
+    "sphinx.ext.viewcode",
+    "sphinx_autodoc_typehints",
+    "sphinx_automodapi.automodapi",
+    "sphinx_automodapi.smart_resolver",
+    "sphinx_click.ext",
+    "click_extra.sphinx",
+    "sphinxcontrib.programoutput",
+]
 
 # generate autosummary pages
 autosummary_generate = True
@@ -224,4 +235,3 @@ autoclass_content = "both"
 # Don't sort alphabetically, explained at:
 # https://stackoverflow.com/questions/37209921/python-how-not-to-sort-sphinx-output-in-alphabetical-order
 autodoc_member_order = "bysource"
-

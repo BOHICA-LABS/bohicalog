@@ -103,17 +103,17 @@ if os.name == "nt":
 
 
 def setup_logger(
-        name=__name__,
-        logfile=None,
-        level=DEBUG,
-        formatter=None,
-        maxbytes=0,
-        backupcount=0,
-        fileloglevel=None,
-        disablestderrlogger=False,
-        isrootlogger=False,
-        json=False,
-        json_ensure_ascii=False,
+    name=__name__,
+    logfile=None,
+    level=DEBUG,
+    formatter=None,
+    maxbytes=0,
+    backupcount=0,
+    fileloglevel=None,
+    disablestderrlogger=False,
+    isrootlogger=False,
+    json=False,
+    json_ensure_ascii=False,
 ):
     """
     Configures and returns a fully configured logger instance, no hassles.
@@ -192,6 +192,7 @@ def setup_logger(
         _logger.addHandler(rotating_filehandler)
 
     return _logger
+
 
 class LogFormatter(logging.Formatter):
     """
