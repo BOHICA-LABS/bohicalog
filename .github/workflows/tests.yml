@@ -53,6 +53,9 @@ jobs:
         run: tox run -e docstr-coverage
       - name: Check documentation build with Sphinx
         run: tox run -e docs-test
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_BOT_CHAT_ID: ${{ secrets.TELEGRAM_BOT_CHAT_ID }}
   tests:
     name: Tests
     runs-on: ${{ matrix.os }}
@@ -76,3 +79,21 @@ jobs:
         if: success()
         with:
           file: coverage.xml
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    needs: [lint, docs, tests]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: pip install tox
+      - name: Build and publish
+        env:
+          TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
+        run: tox run -e release
