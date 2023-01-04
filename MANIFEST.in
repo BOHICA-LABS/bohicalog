@@ -16,5 +16,5 @@ recursive-include docs/source/_examples *.py
 
 global-exclude *.py[cod] __pycache__ *.so *.dylib .DS_Store *.gpickle
 
-include README.md LICENSE
+include README.md LICENSE *.template
 exclude tox.ini .bumpversion.cfg .readthedocs.yml .cruft.json *.iml .idea/*.xml  docs/source/_static/*.* demo.py
