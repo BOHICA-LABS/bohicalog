@@ -9,6 +9,7 @@ The pipeline consists of the following stages:
 -  lint: runs the linter(s) on the code
 -  docs: runs the linter(s) on the documentation
 -  test: runs the unit tests
+-  release: builds the package and publishes it to PyPI
 
 *******************
  Github Action File
