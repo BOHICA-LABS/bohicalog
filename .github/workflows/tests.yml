@@ -53,6 +53,9 @@ jobs:
         run: tox run -e docstr-coverage
       - name: Check documentation build with Sphinx
         run: tox run -e docs-test
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_BOT_CHAT_ID: ${{ secrets.TELEGRAM_BOT_CHAT_ID }}
   tests:
     name: Tests
     runs-on: ${{ matrix.os }}
