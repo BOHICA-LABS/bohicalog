@@ -11,7 +11,8 @@ prune docs/source/api
 recursive-include docs/source *.py
 recursive-include docs/source *.rst
 recursive-include docs/source *.png
-recursive-include docs/source/_staticS *.png
+recursive-include docs/source/_static *.png
+recursive-include docs/source/_examples *.py
 
 global-exclude *.py[cod] __pycache__ *.so *.dylib .DS_Store *.gpickle
 
