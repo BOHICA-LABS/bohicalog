@@ -83,6 +83,37 @@ To run a specific environment, you can use the -e flag:
  Release Workflow
 *****************
 
+The release workflow is defined below:
+
+1.  tox -e lint
+2.  tox -e manifest
+3.  tox -e pyroma
+4.  tox -e flake8
+5.  tox -e mypy
+6.  tox -e doc8
+7.  tox -e docstr-coverage
+8.  tox -e docs-test
+9.  tox -e py
+10.  tox
+11.  tox -e bumpversion -- {major, minor} <-- Only if required, finish automatically bumps
+     the minor version after each release
+12.  tox -e finish
+
+Ensure you have the following environment variables set:
+
+-  TWINE_USERNAME
+-  TWINE_PASSWORD
+-  TELEGRAM_BOT_TOKEN
+-  TELEGRAM_BOT_CHAT_ID
+
+Execute steps 1-10 to ensure that the code is ready for release.
+If any of the steps fail, fix the issues and repeat the steps.
+
+If the release is a major or minor release, execute step 11 to bump the version.
+If the release is a patch release, skip step 11.
+
+Execute step 12 to finish the release. This will automatically bump the version to the next minor version.
+This is to ensure that the version is always ahead of the latest release.
 
 
 ************
