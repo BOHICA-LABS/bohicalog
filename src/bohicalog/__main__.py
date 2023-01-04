@@ -10,5 +10,4 @@ from .cli import main
 from .cli.handlers import telegram
 
 if __name__ == "__main__":
-    main.add_command(telegram)
     main()

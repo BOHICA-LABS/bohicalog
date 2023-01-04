@@ -14,6 +14,8 @@ import logging
 
 import click
 
+from .handlers import telegram
+
 __all__ = [
     "main",
 ]
@@ -24,8 +26,10 @@ logger = logging.getLogger(__name__)
 @click.group()
 @click.version_option()
 def main():
-    """CLI for {{cookiecutter.package_name}}."""
+    """CLI for bohicalog."""
 
+
+main.add_command(telegram)
 
 if __name__ == "__main__":
     main()

@@ -35,7 +35,9 @@ logger
 
    ...
 
-.. image:: /_static/demo-output-json.png
-   :target: ../_images/demo-output-json.png
-   :alt: Demo with JSON output
-   :align: center
+If you execute the above code, you'll get the following output:
+
+.. program-output:: python basic_example.py
+   :cwd: ../_examples
+   :shell:
+   :prompt:

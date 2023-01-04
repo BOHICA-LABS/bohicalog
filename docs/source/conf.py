@@ -27,7 +27,7 @@ copyright = f"{date.today().year}, Joshua Magady"
 author = "Joshua Magady"
 
 # The full version, including alpha/beta/rc tags.
-release = "1.1.2-dev"
+release = "1.1.2"
 
 # The short X.Y version.
 parsed_version = re.match(
@@ -66,7 +66,9 @@ extensions = [
     "sphinx_autodoc_typehints",
     "sphinx_automodapi.automodapi",
     "sphinx_automodapi.smart_resolver",
-    # 'texext',
+    "sphinx_click.ext",
+    "click_extra.sphinx",
+    "sphinxcontrib.programoutput",
 ]
 
 # generate autosummary pages
@@ -233,4 +235,3 @@ autoclass_content = "both"
 # Don't sort alphabetically, explained at:
 # https://stackoverflow.com/questions/37209921/python-how-not-to-sort-sphinx-output-in-alphabetical-order
 autodoc_member_order = "bysource"
-
