@@ -36,25 +36,33 @@
    :maxdepth: 1
    :caption: Getting Started
 
-   installation
+   install/installation
 
 .. toctree::
    :maxdepth: 1
    :caption: Usage
 
-   basic_usage
+   usages/basic_usage
+   usages/command_line_usage
+   usages/telegram_usage
 
 .. toctree::
    :maxdepth: 1
    :caption: Modules
 
-   bohicalog_module
+   modules/bohicalog_module
 
 .. toctree::
    :maxdepth: 1
    :caption: Handlers
 
    handlers/telegram_module
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Command Line Interface
+
+    cli/cli_module
 
 ********************
  Indices and Tables
