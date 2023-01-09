@@ -1,0 +1,3 @@
+pytest == 6.2.5 # A mature full-featured Python testing tool that helps you write better programs
+coverage == 6.0 # A tool for measuring code coverage of Python programs
+python-dotenv >= 0.19.1 # A module to read key-value pairs from a .env file and set them as environment variables

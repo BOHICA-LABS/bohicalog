@@ -1,0 +1,14 @@
+python-dotenv >= 0.19.1 # A module to read .env files and set environment variables
+sphinx >= 4.0.0 # A tool that makes it easy to create intelligent and beautiful documentation
+furo == 2022.9.15 # A modern, responsive, and mobile-friendly Sphinx theme
+pytest == 6.2.5 # A testing framework for Python
+sphinx-rtd-theme >= 0.5.2 # A Sphinx theme for Read the Docs
+sphinx-click >= 2.5.0 # A Sphinx extension for documenting Click applications
+click-extra >= 3.6.0 # A collection of Click extensions
+sphinxcontrib-programoutput >= 0.16 # A Sphinx extension for program output
+sphinx-autodoc-typehints >= 1.12.0 # A Sphinx extension for automatically documenting Python type hints
+sphinx_automodapi >= 0.13 # A Sphinx extension for automatically documenting Python modules
+
+# To include LaTeX comments easily in your docs.
+# If you uncomment this, don't forget to do the same in docs/conf.py
+# texext

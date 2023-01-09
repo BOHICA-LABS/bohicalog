@@ -1,0 +1,6 @@
+setuptools==65.6.3
+pre-commit >= 2.15.0
+tox >= 4.0.0
+bump2version >= 1.0.1
+twine >= 3.4.2
+wheel >= 0.36.2
