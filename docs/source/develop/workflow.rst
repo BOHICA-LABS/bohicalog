@@ -83,6 +83,9 @@ To run a specific environment, you can use the -e flag:
  Release Workflow
 *****************
 
+# TODO: Workflow is really, create a release branch, bump2version release --tag, PR to main, then build and release.
+# Then PR back to develop. and bump2version patch
+
 The release workflow is defined below:
 
 1.  tox -e lint
